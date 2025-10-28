@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "title": "Discover the Beauty of Islam",
+    "subtitle": "Explore faith, science, history, and wisdom — one question at a time.",
+    "cta": "Start Your Journey",
+    "image": "/hero.jpg"
+  },
+  "collections": [
+    {
+      "title": "Reasons to Believe",
+      "description": "See how science and faith align in the Quran.",
+      "link": "/reasons-to-believe",
+      "icon": "sparkles",
+      "color": "from-blue-500 to-teal-500"
+    },
+    {
+      "title": "Scientific Miracles",
+      "description": "Quranic verses that predicted modern science.",
+      "link": "/scientific-miracles",
+      "icon": "beaker",
+      "color": "from-purple-500 to-pink-500"
+    },
+    {
+      "title": "Life of Prophet Muhammad ﷺ",
+      "description": "A man who changed the world with mercy and justice.",
+      "link": "/prophet-muhammad",
+      "icon": "heart",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "title": "Purpose of Life",
+      "description": "What are we here for? Islam's answer.",
+      "link": "/purpose-of-life",
+      "icon": "compass",
+      "color": "from-orange-500 to-red-500"
+    }
+  ],
+  "why": {
+    "title": "Why Explore Islam?",
+    "items": [
+      {
+        "icon": "lightbulb",
+        "title": "Clear & Logical",
+        "text": "A faith built on reason, evidence, and reflection."
+      },
+      {
+        "icon": "globe",
+        "title": "Universal Message",
+        "text": "For all people, all times, all places."
+      },
+      {
+        "icon": "shield",
+        "title": "Peace & Justice",
+        "text": "A way of life that promotes compassion and fairness."
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "quote": "I was skeptical, but the scientific accuracy in the Quran blew my mind.",
+      "author": "Alex, Software Engineer"
+    },
+    {
+      "quote": "The emphasis on mercy and kindness won my heart.",
+      "author": "Sarah, Teacher"
+    }
+  ]
+}

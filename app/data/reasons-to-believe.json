@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "title": "Reasons to Believe!",
+    "description": "Islam invites you to explore the magnificent creation, where every discovery reveals another chapter in the unfolding story of God's boundless wisdom. Far from standing in opposition to faith, science becomes a trusted companion in this awe-inspiring journey of understanding.",
+    "slides": [
+      {
+        "image": "https://d6x6me9j41n5u.cloudfront.net/universe_expansion.webp",
+        "altText": "The Expanding Universe",
+        "hash": "universe-expansion"
+      },
+      {
+        "image": "https://d6x6me9j41n5u.cloudfront.net/order_in_the_universe.webp",
+        "altText": "Order in the Universe",
+        "hash": "order-in-the-universe"
+      },
+      {
+        "image": "https://d6x6me9j41n5u.cloudfront.net/lifes_purpose.webp",
+        "altText": "Life's Purpose",
+        "hash": "lifes-purpose"
+      },
+      {
+        "image": "https://d6x6me9j41n5u.cloudfront.net/humanitys_blueprint.webp",
+        "altText": "Humanity's Blueprint",
+        "hash": "humanitys-blueprint"
+      }
+    ]
+  },
+  "suffering": {
+    "title": "Why is there suffering in the world?",
+    "paragraphs": [
+      "Each of us faces unique trials, a personalized test of faith. These challenges, whether great or small, are not just a reflection of God's love but even opportunities for growth. While we cannot control the storms that rage around us, we choose how we weather them. Our response, not our circumstance, is what truly matters.",
+      "This world is but a fleeting moment, a prelude to eternity. The injustices we endure here will be rectified in a realm of perfect justice. If you think this life is all there is, you've missed the grandest picture. We are destined for something infinitely greater, an eternal paradise called Jannah. Our trials here are stepping stones to that ultimate reward."
+    ]
+  },
+  "tools": [
+    {
+      "title": "NASA's Eyes",
+      "subtitle": "Interactive 3D",
+      "description": "Explore the solar system, the universe, and the spacecraft exploring them with this 3D visualization tool from NASA. Witness the majesty of Allah's creation on a cosmic scale.",
+      "link": "https://eyes.nasa.gov/apps/exo/",
+      "button": "Launch NASA's Eyes"
+    },
+    {
+      "title": "Scale of the Universe",
+      "subtitle": "Interactive Scale",
+      "description": "An interactive experience that shows the relative scale of objects in the universe, from quantum foam to the observable universe. A humbling perspective on creation.",
+      "link": "https://htwins.net/scale2/",
+      "button": "Explore the Scale"
+    },
+    {
+      "title": "Cell Size and Scale",
+      "subtitle": "Microscopic World",
+      "description": "Discover the microscopic world of cells and molecules that make up all living things. Each cell is a universe of complexity, testifying to Allah's perfect design.",
+      "link": "https://learn.genetics.utah.edu/content/cells/scale/",
+      "button": "Explore Cells"
+    },
+    {
+      "title": "Earth Wind Map",
+      "subtitle": "Real-time Data",
+      "description": "A visualization of global weather conditions, showing the complex and beautiful patterns of wind, weather, and ocean currents - all moving by Allah's command.",
+      "link": "https://earth.nullschool.net/",
+      "button": "View Wind Map"
+    }
+  ],
+  "quran": {
+    "text": "He ˹also˺ subjected for you whatever is in the heavens and whatever is on the earth—all by His grace. Surely in this are signs for people who reflect.",
+    "reference": "Quran 45:13"
+  },
+  "videos": [
+    {
+      "title": "How Allah Started the Universe?",
+      "thumbnail": "/thumbnails/start-universe.jpg",
+      "url": "https://www.youtube.com/embed/abc123"
+    },
+    {
+      "title": "The Purpose of Makkan & Madinan Revelations | Surah Al-Hadid | Nouman Ali Khan",
+      "thumbnail": "/thumbnails/nouman.jpg",
+      "url": "https://www.youtube.com/embed/def456"
+    },
+    {
+      "title": "How Allah Create The Whole Universe",
+      "thumbnail": "/thumbnails/supreme-power.jpg",
+      "url": "https://www.youtube.com/embed/ghi789"
+    }
+  ]
+}
