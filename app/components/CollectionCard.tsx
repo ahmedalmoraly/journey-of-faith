@@ -22,7 +22,7 @@ interface CollectionCardProps {
 export default function CollectionCard({ title, description, link, icon, color }: CollectionCardProps) {
   return (
     <Link href={link}>
-      <div className={`group bg-gradient-to-br ${color} p-1 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer`}>
+      <div className={`group bg-linear-to-br ${color} p-1 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer`}>
         <div className="bg-white rounded-2xl p-8 h-full flex flex-col justify-between">
           <div>
             <div className="text-5xl mb-4">{icon in icons ? icons[icon as IconType] : icons.default}</div>
