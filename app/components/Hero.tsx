@@ -24,7 +24,7 @@ interface HeroProps {
 
 export default function Hero({ title, description, slides }: HeroProps) {
   return (
-    <section className="bg-linear-to-br from-[#e0dcdc] to-[#e0dcdc] py-12 md:py-20">
+    <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-linear-to-br from-[#e0dcdc] to-[#e0dcdc] py-12 md:py-20">
         <div className="container mx-auto px-4">
             <div className="flex flex-col lg:flex-row items-center gap-8">
                 <div className="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">

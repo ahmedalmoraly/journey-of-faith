@@ -3,7 +3,7 @@ export default function ToolCard({ title, subtitle, image, description, link, bu
     <div className="group h-full bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 mx-auto flex flex-col">
       <div className="relative h-48 md:h-60 bg-cover bg-center overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${image}')` }}></div>
-          <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent">
+          <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent">
               <div className="absolute bottom-0 left-0 p-5 w-full">
                   <div className="flex items-center">
                       <div className="bg-white/20 backdrop-blur-sm p-2 rounded-lg mr-3">
