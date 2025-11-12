@@ -25,7 +25,8 @@
       }
     ]
   },
-  "suffering": {
+  "featuredArticle": {
+    "image": "https://d6x6me9j41n5u.cloudfront.net/reasons_to_believe.webp",
     "title": "Why is there suffering in the world?",
     "paragraphs": [
       "Each of us faces unique trials, a personalized test of faith. These challenges, whether great or small, are not just a reflection of God's love but even opportunities for growth. While we cannot control the storms that rage around us, we choose how we weather them. Our response, not our circumstance, is what truly matters.",
@@ -36,36 +37,40 @@
     {
       "title": "NASA's Eyes",
       "subtitle": "Interactive 3D",
+      "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/eyes/common/promotion/Eyes_noText.png",
       "description": "Explore the solar system, the universe, and the spacecraft exploring them with this 3D visualization tool from NASA. Witness the majesty of Allah's creation on a cosmic scale.",
       "link": "https://eyes.nasa.gov/apps/exo/",
-      "button": "Launch NASA's Eyes"
+      "button": "Launch NASA's Eyes",
+      "icon": "fas fa-globe"
     },
     {
       "title": "Scale of the Universe",
       "subtitle": "Interactive Scale",
+      "image": "https://i.ytimg.com/vi/uaGEjrADGPA/maxresdefault.jpg",
       "description": "An interactive experience that shows the relative scale of objects in the universe, from quantum foam to the observable universe. A humbling perspective on creation.",
       "link": "https://htwins.net/scale2/",
-      "button": "Explore the Scale"
+      "button": "Explore the Scale",
+      "icon": "fas fa-expand-arrows-alt"
     },
     {
       "title": "Cell Size and Scale",
       "subtitle": "Microscopic World",
+      "image": "https://learn-genetics.b-cdn.net/images/global/favicon-196x196.png",
       "description": "Discover the microscopic world of cells and molecules that make up all living things. Each cell is a universe of complexity, testifying to Allah's perfect design.",
       "link": "https://learn.genetics.utah.edu/content/cells/scale/",
-      "button": "Explore Cells"
+      "button": "Explore Cells",
+      "icon": "fas fa-microscope"
     },
     {
       "title": "Earth Wind Map",
       "subtitle": "Real-time Data",
+      "image": "https://earth.nullschool.net/sample.jpg",
       "description": "A visualization of global weather conditions, showing the complex and beautiful patterns of wind, weather, and ocean currents - all moving by Allah's command.",
       "link": "https://earth.nullschool.net/",
-      "button": "View Wind Map"
+      "button": "View Wind Map",
+      "icon": "fas fa-wind"
     }
   ],
-  "quran": {
-    "text": "He ˹also˺ subjected for you whatever is in the heavens and whatever is on the earth—all by His grace. Surely in this are signs for people who reflect.",
-    "reference": "Quran 45:13"
-  },
   "videos": [
     {
       "title": "How Allah Started the Universe?",
@@ -81,6 +86,29 @@
       "title": "How Allah Create The Whole Universe",
       "thumbnail": "/thumbnails/supreme-power.jpg",
       "url": "https://www.youtube.com/embed/ghi789"
+    }
+  ],
+  "articles": [
+    {
+      "title": "How is nature a proof of God's existence?",
+      "description": "For decades, we have witnessed the sky as an unwavering roof. Not a single pillar to support and not a single hole in this roof, that requires for any type of repair.",
+      "image": "https://www.whyislam.org/wp-content/uploads/2023/06/Proof-of-Gods-Existence.png",
+      "link": "https://www.whyislam.org/how-is-nature-a-proof-of-gods-existence",
+      "source": "WhyIslam.org"
+    },
+    {
+      "title": "Does God Exist? The Case For Allah's Existence In The Quran And Sunnah",
+      "description": "Does Allah really exist? The proof of Allah's existence is in the Quran and Sunnah, and it is built on signs that appeal to both the heart (via intuition) and the mind (through rational thought)",
+      "image": "https://i.yaqeeninstitute.org/?src=img%2Fpaper%2F010%2F010_rect_default.jpg",
+      "link": "https://yaqeeninstitute.org/read/paper/the-case-for-allahs-existence-in-the-quran-and-sunnah",
+      "source": "YaQeenInstitute.org"  
+    },
+    {
+      "title": "Signs of the Divine: The Honeybee in the Quran",
+      "description": "The Quran, the sacred scripture of Islam, contains infinitely profound wisdom, sometimes communicated through intricate symbols and metaphors that require deep reflection. One of the most celebrated symbols is the honeybee, an unlikely candidate that initially seems insignificant.",
+      "image": "https://www.whyislam.org/wp-content/uploads/2024/02/Feat.jpg",
+      "link": "https://www.whyislam.org/honeybee/",
+      "source": "WhyIslam.org"
     }
   ]
 }

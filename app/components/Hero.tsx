@@ -26,14 +26,19 @@ export default function Hero({ title, description, slides }: HeroProps) {
   return (
     <section className="bg-linear-to-br from-[#e0dcdc] to-[#e0dcdc] py-12 md:py-20">
         <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+                <div className="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 article-title">{title}</h1>
                     <p className="text-lg text-gray-700 mb-8 paragraph">{description}</p>                    
                     <CTAs />
                 </div>
 
-                <div className="w-full md:w-1/2 relative">
+                <div className="w-full lg:w-1/2 relative">
+                {/* Navigation Buttons */}
+                  {/* <button className="hero-prev absolute left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-[#28348E] hover:bg-[#28348E] hover:text-white transition-all duration-300">
+                    <i className="fas fa-chevron-left"></i>
+                  </button> */}
+                  
                   <Swiper
                       modules={[Navigation, Pagination, Autoplay, HashNavigation]}
                       spaceBetween={30}
@@ -53,6 +58,10 @@ export default function Hero({ title, description, slides }: HeroProps) {
                       </SwiperSlide>
                     ))}
                   </Swiper>
+                  
+                  {/* <button className="hero-next absolute right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-[#28348E] hover:bg-[#28348E] hover:text-white transition-all duration-300">
+                    <i className="fas fa-chevron-right"></i>
+                  </button> */}
                 </div>
             </div>
         </div>

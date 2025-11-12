@@ -1,5 +1,11 @@
 import { notFound } from 'next/navigation';
 import Hero from '@/components/Hero';
+import MainContainer from '@/components/MainContainer';
+import ToolsGrid from '@/components/ToolsGrid';
+import ArticlesGrid from '@/components/ArticlesGrid';
+import ArticleCard from '@/components/ArticleCard';
+import AyahADay from '@/components/AyahADay';
+import FeaturedArticle from '@/components/FeaturedArticle'; 
 
 // Define the type for our collection data
 const collectionData = {
@@ -32,10 +38,21 @@ export default async function CollectionPage({ params }: Props) {
     notFound();
   }
 
+  const toolsGrid = <ToolsGrid key="tools" tools={data.tools}/>;
+  const articlesGrid = <ArticlesGrid key="articles" articles={data.articles}/>;
+  const featuredArticle = <FeaturedArticle key="featured-article" title={data.featuredArticle.title} paragraphs={data.featuredArticle.paragraphs} image={data.featuredArticle.image}/>
+
+  const mainContent = [featuredArticle, toolsGrid, articlesGrid];
+  
+  const sidebarContent = [
+          <AyahADay key="ayahaday" />
+        ];
+
   return (
     <>
       <Hero title={data.hero.title} description={data.hero.description} slides={data.hero.slides} />
       {/* ... other sections */}
+      <MainContainer mainContent={mainContent} sidebarContent={sidebarContent} />
     </>
   );
 }

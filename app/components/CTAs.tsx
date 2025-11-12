@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CTAs() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 min-w-[250px] md:min-w-[300px] lg:min-w-[300px]">
+    <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 min-w-[250px] md:min-w-[300px] lg:min-w-[300px]">
       <Link href="#contact" className="cta-card bg-white p-6 text-center hover:shadow-lg transition-shadow relative">
         <div className="--primary-text-color text-2xl mb-3">
           <i className="fas fa-envelope"></i>

@@ -38,5 +38,8 @@ module.exports = {
       // like spacing, borderRadius, etc.
     },
   },
-  plugins: [],
+  // tailwind.config.js
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }
