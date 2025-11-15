@@ -53,13 +53,6 @@ body {
 .article-title:hover {
     color: var(--hover-text-color);
 }
-.section-title {
-    color: #1F2937;
-    position: relative;
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    font-family: 'amsipro-bold';
-}
 .cta-title {
     font-family: 'amsipro-bold';
     color: var(--primary-text-color);
@@ -68,9 +61,12 @@ body {
 .cta-title:hover {
     color: var(--hover-text-color);
 }
-.paragraph {
-    font-family: 'avenir';
-    color: var(--paragraph-text-color);
+.section-title {
+    color: #1F2937;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-family: 'amsipro-bold';
 }
 .section-title:after {
     content: '';
@@ -82,6 +78,24 @@ body {
     background: #28348E;
     border-radius: 2px;
 }
+.paragraph {
+    font-family: 'avenir';
+    color: var(--paragraph-text-color);
+}
+
+.hero-title {
+    font-family: 'amsipro-bold';
+    color: white;
+    transition: all 0.3s ease;
+}
+.hero-title:hover {
+    color: var(--hover-text-color);
+}
+.hero-paragraph {
+    font-family: 'avenir';
+    color: white;
+}
+
 .tool-slide {
     max-width: 350px;
 }

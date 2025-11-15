@@ -3,9 +3,9 @@ import Hero from '@/components/Hero';
 import MainContainer from '@/components/MainContainer';
 import ToolsGrid from '@/components/ToolsGrid';
 import ArticlesGrid from '@/components/ArticlesGrid';
-import ArticleCard from '@/components/ArticleCard';
 import AyahADay from '@/components/AyahADay';
 import FeaturedArticle from '@/components/FeaturedArticle'; 
+import VideosGrid from '@/components/VideosGrid';
 
 // Define the type for our collection data
 const collectionData = {
@@ -38,11 +38,12 @@ export default async function CollectionPage({ params }: Props) {
     notFound();
   }
 
+  const featuredArticle = <FeaturedArticle key="featured-article" title={data.featuredArticle.title} paragraphs={data.featuredArticle.paragraphs} image={data.featuredArticle.image}/>
   const toolsGrid = <ToolsGrid key="tools" tools={data.tools}/>;
   const articlesGrid = <ArticlesGrid key="articles" articles={data.articles}/>;
-  const featuredArticle = <FeaturedArticle key="featured-article" title={data.featuredArticle.title} paragraphs={data.featuredArticle.paragraphs} image={data.featuredArticle.image}/>
+  const videosGrid = <VideosGrid key="videos" videos={data.videos} shorts={data.shorts}/>;
 
-  const mainContent = [featuredArticle, toolsGrid, articlesGrid];
+  const mainContent = [featuredArticle, toolsGrid, articlesGrid, videosGrid];
   
   const sidebarContent = [
           <AyahADay key="ayahaday" />

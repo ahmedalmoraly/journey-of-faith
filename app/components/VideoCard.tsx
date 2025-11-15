@@ -1,24 +1,46 @@
-import ReactPlayer from "react-player";
+'use client';
+
+import { useEffect, useRef } from 'react';
 
 interface VideoCardProps {
   title: string;
   url: string;
+  description: string;
+  isShort?: boolean;
 }
 
-export default function VideoCard({ title, url }: VideoCardProps) {
+export default function VideoCard({ title, url, description, isShort }: VideoCardProps) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  // Add any necessary effects here if needed
+  useEffect(() => {
+    // Any side effects related to the iframe can go here
+  }, [url]);
+
+  const videoContent = (
+    <div className={`relative ${isShort ? 'pt-[177.78%]' : 'pt-[56.25%]'} bg-gray-100`}>
+      <iframe
+        className="absolute top-0 left-0 w-full h-full rounded-t-xl"
+        src={url}
+        title={title}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
+  );
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden">
-      <div className="aspect-w-16 aspect-h-9">
-        <ReactPlayer src={url}
-          width="100%"
-          height="220px"
-          light={true}
-          controls
-          style={{ aspectRatio: '16/9' }}
-        />
-      </div>
+    <div className={`rounded-xl shadow-sm overflow-hidden bg-white'}`}>
+      {isShort ? (
+        <div className="relative w-full max-w-sm mx-auto">
+          {videoContent}
+        </div>
+      ) : (
+        videoContent
+      )}
       <div className="p-4">
-        <h3 className="font-semibold text-lg text-blue-800">{title}</h3>
+        <h3 className="font-bold mb-1 article-title">{title}</h3>
+        <p className="text-sm text-gray-600 paragraph">{description}</p>
       </div>
     </div>
   );

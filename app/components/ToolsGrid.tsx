@@ -50,8 +50,6 @@ export default function ToolsGrid({ tools }: { tools: any[] }) {
                                 nextEl: '.scientific-tools-next',
                                 prevEl: '.scientific-tools-prev',
                             }}
-                            onSwiper={(swiper) => console.log(swiper)}
-                            onSlideChange={() => console.log('slide change')}
                             autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                             loop={true}
                             className="scientific-tools-swiper relative"
