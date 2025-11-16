@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 interface VideoCardProps {
   title: string;
@@ -10,9 +10,6 @@ interface VideoCardProps {
 }
 
 export default function VideoCard({ title, url, description, isShort }: VideoCardProps) {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  // Add any necessary effects here if needed
   useEffect(() => {
     // Any side effects related to the iframe can go here
   }, [url]);

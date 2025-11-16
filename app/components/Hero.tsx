@@ -1,6 +1,7 @@
 'use client'
 
 import CTAs from "./CTAs";
+import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, HashNavigation } from "swiper/modules";
@@ -24,7 +25,7 @@ interface HeroProps {
 
 export default function Hero({ title, description, slides }: HeroProps) {
   return (
-    <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-linear-to-br from-[#e0dcdc] to-[#e0dcdc] py-12 md:py-20">
+    <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-linear-to-br from-[#e0dcdc] to-[#e0dcdc] z-10 mt-20 pt-20 pb-20 md:pb-32">
       {/* Full-screen Swiper Background */}
       <div className="absolute inset-0 z-0">
         <Swiper
@@ -44,12 +45,16 @@ export default function Hero({ title, description, slides }: HeroProps) {
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide.hash} data-hash={slide.hash} className="h-full">
-              <div 
-                className="h-full w-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${slide.image})` }}
-              >
+              <div className="relative h-full w-full">
+                <Image
+                  src={slide.image}
+                  alt={slide.altText}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
-              <div className="absolute inset-0 bg-black opacity-50" />
+              <div className="absolute inset-0 bg-black/50" />
             </SwiperSlide>
           ))}
         </Swiper>

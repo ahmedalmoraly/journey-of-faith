@@ -71,7 +71,7 @@ export default function Header() {
     ];
 
     return (
-        <header className="bg-white shadow-sm relative" ref={menuRef}>
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 px-4 py-4 md:px-6" ref={menuRef}>
             <div className="container mx-auto px-4 py-4">
                 <div className="flex justify-between items-center">
                     {/* Logo */}

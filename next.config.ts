@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
       }
     ];
  },
+ images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'd6x6me9j41n5u.cloudfront.net', // Replace with your S3 endpoint
+        pathname: '/**',
+      },
+    ],
+  },
 };
-
 export default nextConfig;

@@ -30,7 +30,7 @@ export default function Footer() {
                         <a href="#" className="text-white"><i className="fab fa-instagram"></i></a>
                         <a href="#" className="text-white"><i className="fab fa-youtube"></i></a>
                     </div>
-                    <p className="footer-title">Subscribe to our newsletter</p>
+                    {/* <p className="footer-title">Subscribe to our newsletter</p>
                     <div className="mt-2 flex">
                         <input type="email" 
                                placeholder="Your email" 
@@ -38,7 +38,7 @@ export default function Footer() {
                         <button className="bg-[#28348E] hover:bg-[#28348E] px-4 rounded-r-lg">
                             <i className="fas fa-paper-plane"></i>
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="border-t border-gray-700 mt-8 pt-8 text-center footer-title">

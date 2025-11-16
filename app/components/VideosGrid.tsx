@@ -45,9 +45,9 @@ export default function VideosGrid({ videos, shorts }: { videos: Video[], shorts
     <section className="mb-16">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold section-title">Featured Videos</h2>
-        <a href="#" className="text-[#28348E] hover:text-[#FFC931] font-medium flex items-center">
+        {/* <a href="#" className="text-[#28348E] hover:text-[#FFC931] font-medium flex items-center">
           View More Videos <i className="fas fa-arrow-right ml-2"></i>
-        </a>
+        </a> */}
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
