@@ -25,7 +25,7 @@ interface HeroProps {
 
 export default function Hero({ title, description, slides }: HeroProps) {
   return (
-    <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-linear-to-br from-[#e0dcdc] to-[#e0dcdc] z-10 mt-20 pt-20 pb-20 md:pb-32">
+    <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-linear-to-br from-[#e0dcdc] to-[#e0dcdc] z-10 mt-0 pt-32 pb-32 md:pb-48">
       {/* Full-screen Swiper Background */}
       <div className="absolute inset-0 z-0">
         <Swiper
@@ -61,7 +61,7 @@ export default function Hero({ title, description, slides }: HeroProps) {
       </div>
 
       {/* Content Overlay */}
-      <div className="container mx-auto px-4 relative z-10 text-white">
+      <div className="container mx-auto px-4 mt-20 relative z-10 text-white">
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 hero-title">
             {title}

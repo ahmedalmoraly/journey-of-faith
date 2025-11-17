@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Language {
     code: string;
@@ -71,12 +72,12 @@ export default function Header() {
     ];
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 px-4 py-4 md:px-6" ref={menuRef}>
-            <div className="container mx-auto px-4 py-4">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 px-4 py-2 md:py-4" ref={menuRef}>
+            <div className="container mx-auto px-4 py-0">
                 <div className="flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <img src="https://d6x6me9j41n5u.cloudfront.net/rof-logo-notext.png" alt="Logo" className="h-10 w-auto mr-3 rounded-md" />
+                        <Image src="https://d6x6me9j41n5u.cloudfront.net/rof-logo-notext.png" alt="Logo" className="mr-3 rounded-md" width={32} height={32} />
                         <span className="text-2xl font-bold text-[#28348E]">Journey of Faith</span>
                     </Link>
 
