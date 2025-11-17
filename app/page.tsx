@@ -1,8 +1,3 @@
-import Image from "next/image";
-import Hero from "@/components/Hero";
-import CollectionCard, { IconType } from "@/components/CollectionCard";
-import WhyCard from "@/components/WhyCard";
-import Testimonial from "@/components/Testimonial";
 
 import data from "@/data/landing.json";
 import { redirect, RedirectType } from "next/navigation";

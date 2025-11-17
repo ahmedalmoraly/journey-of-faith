@@ -6,8 +6,9 @@ import ArticlesGrid from '@/components/ArticlesGrid';
 import AyahADay from '@/components/AyahADay';
 import FeaturedArticle from '@/components/FeaturedArticle'; 
 import VideosGrid from '@/components/VideosGrid';
+import RelatedCollections from '@/components/RelatedCollections';
 
-import {collections} from '@/types/collections';
+import {collections, allCollections} from '@/types/collections';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -35,9 +36,9 @@ export default async function CollectionPage({ params }: PageProps) {
   const toolsGrid = <ToolsGrid key="tools" tools={data.tools}/>;
   const articlesGrid = <ArticlesGrid key="articles" articles={data.articles}/>;
   const videosGrid = <VideosGrid key="videos" videos={data.videos} shorts={data.shorts}/>;
+  const relatedCollections = <RelatedCollections key="related-collections" collections={data.relatedCollections.map((collectionKey) => allCollections[collectionKey])}/>;
 
-  const mainContent = [featuredArticle, toolsGrid, videosGrid, articlesGrid];
-  
+  const mainContent = [featuredArticle, toolsGrid, videosGrid, articlesGrid, relatedCollections];
   const sidebarContent = [
           <AyahADay key="ayahaday" />
         ];
