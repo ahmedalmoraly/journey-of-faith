@@ -1,5 +1,5 @@
 'use client'
-
+import type {Hero, Slide} from "@/types/collections";
 import CTAs from "./CTAs";
 import Image from "next/image";
 
@@ -11,19 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/hash-navigation";
 
-interface HeroSlide {
-  image: string;
-  altText: string;
-  hash: string;
-}
-
-interface HeroProps {
-  title: string;
-  description: string;
-  slides: HeroSlide[];
-}
-
-export default function Hero({ title, description, slides }: HeroProps) {
+export default function Hero({ title, description, slides }: Hero) {
   return (
     <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-linear-to-br from-[#e0dcdc] to-[#e0dcdc] z-10 mt-0 pt-32 pb-32 md:pb-48">
       {/* Full-screen Swiper Background */}
@@ -43,7 +31,7 @@ export default function Hero({ title, description, slides }: HeroProps) {
           loop
           className="h-full w-full"
         >
-          {slides.map((slide) => (
+          {slides.map((slide: Slide) => (
             <SwiperSlide key={slide.hash} data-hash={slide.hash} className="h-full">
               <div className="relative h-full w-full">
                 <Image

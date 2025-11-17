@@ -1,6 +1,7 @@
 import Link from "next/link";
+import type {Article} from "@/types/collections";
 
-export default function ArticleCard({ title, description, image, source, link }: any) {
+export default function ArticleCard({ title, description, image, source, link }: Article) {
   return (
     <Link href={link} target="_blank" rel="noopener noreferrer" className="h-full">
         <div className="group h-full flex flex-col bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">

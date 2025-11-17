@@ -1,4 +1,6 @@
-export default function ToolCard({ title, subtitle, image, description, link, button, icon }: any) {
+import type {Tool} from "@/types/collections";
+
+export default function ToolCard({ title, subtitle, image, description, link, button, icon }: Tool) {
   return (
     <div className="group h-full bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 mx-auto flex flex-col">
       <div className="relative h-48 md:h-60 bg-cover bg-center overflow-hidden">

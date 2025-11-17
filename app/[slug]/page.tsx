@@ -7,31 +7,24 @@ import AyahADay from '@/components/AyahADay';
 import FeaturedArticle from '@/components/FeaturedArticle'; 
 import VideosGrid from '@/components/VideosGrid';
 
-// Define the type for our collection data
-const collectionData = {
-  'reasons-to-believe': () => import('@/data/reasons-to-believe.json'),
-  // 'scientific-miracles': () => import('@/app/data/scientific-miracles.json'),
-} as const;
+import {collections} from '@/types/collections';
 
-type CollectionKey = keyof typeof collectionData;
-
-interface Props {
-  params: { slug: string };
+interface PageProps {
+  params: Promise<{ slug: string }>;
 }
 
 // Type guard to check if slug is a valid collection key
-function isValidCollectionKey(slug: string): slug is CollectionKey {
-  return slug in collectionData;
+function isValidCollectionKey(slug: string) {
+  return slug in collections;
 }
 
-export default async function CollectionPage({ params }: Props) {
+export default async function CollectionPage({ params }: PageProps) {
   const { slug } = await params;
-  
   if (!isValidCollectionKey(slug)) {
     notFound();
   }
 
-  const module = await collectionData[slug as CollectionKey]();
+  const module = await collections[slug].data();
   const data = module.default;
 
   if (!data) {
@@ -43,7 +36,7 @@ export default async function CollectionPage({ params }: Props) {
   const articlesGrid = <ArticlesGrid key="articles" articles={data.articles}/>;
   const videosGrid = <VideosGrid key="videos" videos={data.videos} shorts={data.shorts}/>;
 
-  const mainContent = [featuredArticle, toolsGrid, articlesGrid, videosGrid];
+  const mainContent = [featuredArticle, toolsGrid, videosGrid, articlesGrid];
   
   const sidebarContent = [
           <AyahADay key="ayahaday" />

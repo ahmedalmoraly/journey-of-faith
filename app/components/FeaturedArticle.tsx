@@ -1,7 +1,8 @@
 'use client';
 import Image from 'next/image';
+import type {FeaturedArticle} from "@/types/collections";
 
-export default function FeaturedArticle({ title, paragraphs, image }: { title: string; paragraphs: string[]; image: string }) {
+export default function FeaturedArticle({ title, paragraphs, image }: FeaturedArticle) {
     return (
         <section className="mb-12">
             <h2 className="text-2xl font-bold mb-6 section-title">Featured Content</h2>

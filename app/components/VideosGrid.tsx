@@ -1,12 +1,7 @@
 'use client';
 import { useMemo } from "react";
+import type {Video} from "@/types/collections";
 import VideoCard from "./VideoCard";
-
-interface Video {
-  title: string;
-  url: string;
-  description: string;
-}
 
 export default function VideosGrid({ videos, shorts }: { videos: Video[], shorts: Video[] }) {
   if (!videos || videos.length === 0) {
@@ -23,6 +18,7 @@ export default function VideosGrid({ videos, shorts }: { videos: Video[], shorts
         title={video.title}
         url={video.url}
         description={video.description}
+        isShort={video.isShort}
       />
     ));
   }, [videos]);
@@ -37,7 +33,7 @@ export default function VideosGrid({ videos, shorts }: { videos: Video[], shorts
         title={short.title}
         url={short.url}
         description={short.description}
-        isShort={true}
+        isShort={short.isShort}
       />
     ));
   }, [shorts]);

@@ -1,15 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
+import type {Video} from "@/types/collections";
 
-interface VideoCardProps {
-  title: string;
-  url: string;
-  description: string;
-  isShort?: boolean;
-}
-
-export default function VideoCard({ title, url, description, isShort }: VideoCardProps) {
+export default function VideoCard({ title, url, description, isShort }: Video) {
   useEffect(() => {
     // Any side effects related to the iframe can go here
   }, [url]);

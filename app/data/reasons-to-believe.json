@@ -75,19 +75,22 @@
     {
       "title": "How Allah Started the Universe?",
       "url": "https://www.youtube.com/embed/yVlYCyShtbI",
-      "description": "How Allah Started the Universe?"
+      "description": "How Allah Started the Universe?",
+      "isShort": false
     },
     {
       "title": "The Purpose of Makkan & Madinan Revelations | Surah Al-Hadid | Nouman Ali Khan",
       "url": "https://www.youtube.com/embed/7_vvORv0HAk",
-      "description": "A Deeper Look! Nouman Ali Khan clarifies the distinct purposes of the Makkan and Madinan Quranic revelations"
+      "description": "A Deeper Look! Nouman Ali Khan clarifies the distinct purposes of the Makkan and Madinan Quranic revelations",
+      "isShort": false
     }
   ],
   "shorts": [
     {
       "title": "How Allah Create The Whole Universe",
       "url": "https://www.youtube.com/embed/faOCqwvbgAE",
-      "description": "The Supreme Power of Allah"
+      "description": "The Supreme Power of Allah",
+      "isShort": true
     }
   ],
   "articles": [
