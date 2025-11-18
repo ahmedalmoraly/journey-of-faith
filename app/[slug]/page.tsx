@@ -3,12 +3,16 @@ import Hero from '@/components/Hero';
 import MainContainer from '@/components/MainContainer';
 import ToolsGrid from '@/components/ToolsGrid';
 import ArticlesGrid from '@/components/ArticlesGrid';
-import AyahADay from '@/components/AyahADay';
 import FeaturedArticle from '@/components/FeaturedArticle'; 
 import VideosGrid from '@/components/VideosGrid';
 import RelatedCollections from '@/components/RelatedCollections';
 
 import {collections, allCollections} from '@/types/collections';
+
+// Sidebar
+import AyahADay from '@/components/AyahADay';
+import NearbyMosques from '@/components/NearbyMosques';
+
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -40,7 +44,8 @@ export default async function CollectionPage({ params }: PageProps) {
 
   const mainContent = [featuredArticle, toolsGrid, videosGrid, articlesGrid, relatedCollections];
   const sidebarContent = [
-          <AyahADay key="ayahaday" />
+          <AyahADay key="ayahaday" />,
+          <NearbyMosques key="nearby-mosques" />
         ];
 
   return (

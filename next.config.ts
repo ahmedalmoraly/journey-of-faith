@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     return [
       // Basic redirect
       {
-        source: '/((?!reasons-to-believe|_next/static|_next/image|favicon.ico).*)',
+        source: '/((?!reasons-to-believe|_next/static|_next/image|favicon.ico|api).*)',
         destination: '/reasons-to-believe',
         permanent: true, // 308 permanent redirect
       }
