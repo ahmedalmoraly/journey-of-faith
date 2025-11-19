@@ -55,7 +55,7 @@ export default function ToolsGrid({ tools }: { tools: any[] }) {
                             className="scientific-tools-swiper relative"
                         >
                             {tools.map((tool, i) => (
-                                <SwiperSlide key={i} className="tool-slide">
+                                <SwiperSlide key={i} className="max-w-[300px]">
                                     <ToolCard {...tool} />
                                 </SwiperSlide>
                             ))}

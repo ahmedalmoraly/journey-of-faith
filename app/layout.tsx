@@ -6,7 +6,8 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
-import Layout from '@/components/Layout';  // Your shared Layout component
+import Layout from '@/components/Layout';
+import { amsipro, avenir } from '@/lib/fonts';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,14 +34,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/amsipro-regular"/>
-        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/amsipro-bold"/>
-        <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet"/>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
       </head>
-      <body
-        className={`${inter.className} antialiased`}
-      >
+      <body className={`${amsipro.variable} ${avenir.variable} font-avenir antialiased`}>
         <Layout>{children}</Layout>
       </body>
     </html>

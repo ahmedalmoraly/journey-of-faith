@@ -21,9 +21,9 @@ export default function VideoCard({ title, url, description, isShort }: Video) {
     </div>
   );
   return (
-    <div className={`rounded-xl shadow-sm overflow-hidden bg-white'}`}>
+    <div className={`rounded-xl shadow-sm overflow-hidden bg-white mx-auto'}`}>
       {isShort ? (
-        <div className="relative w-full max-w-sm mx-auto">
+        <div className="relative w-full max-w-sm ">
           {videoContent}
         </div>
       ) : (

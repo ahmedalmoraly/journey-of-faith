@@ -1,186 +1,151 @@
+/* app/globals.css */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary-text-color: #28348E;
-  --paragraph-text-color: var(--color-gray-700);
-  --hover-text-color: #FFC931;
-  font-family: 'amsipro-bold';
-
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-amsipro-bold: var(--font-amsipro-bold);
-  --font-avenir: var(--font-avenir);
-  --text-color: var(--primary-text-color);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
+/* Colors */
+@theme {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #28348e;
+  --primary-hover: #ffc931;
+  --paragraph: oklch(37.3% 0.034 259.733);
+  --radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --paragraph: oklch(37.3% 0.034 259.733);
+  }
+}
+
+/* Base */
+html { scroll-behavior: smooth; }
 body {
+  @apply antialiased;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-avenir); /* default = Avenir */
 }
 
-.cta-card {
-    transition: all 0.3s ease;
-    border-radius: 12px;
-    overflow: hidden;
-    color: var(--primary-text-color);
-}
-.cta-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    color: var(--hover-text-color);
+/* ==========================================================================
+   FORCE ALL TITLES TO USE AMSIPRO
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6,
+.text-amsipro,
+.title,
+.hero-title,
+.section-title,
+.article-title,
+.cta-title,
+.footer-title {
+  font-family: var(--font-amsipro) !important;
+  font-weight: 700;
+  color: var(--primary);
 }
 
-.article-title {
-    font-family: 'amsipro-bold';
-    color: var(--primary-text-color);
-    transition: all 0.3s ease;
+/* Hero & Footer white text */
+.hero-title,
+.hero-paragraph,
+.footer-paragraph {
+  color: white;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 }
-.article-title:hover {
-    color: var(--hover-text-color);
-}
-.cta-title {
-    font-family: 'amsipro-bold';
-    color: var(--primary-text-color);
-    transition: all 0.3s ease;
-}
-.cta-title:hover {
-    color: var(--hover-text-color);
-}
-.section-title {
-    color: #1F2937;
-    position: relative;
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    font-family: 'amsipro-bold';
-}
-.section-title:after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 50px;
-    height: 4px;
-    background: #28348E;
-    border-radius: 2px;
-}
+
+/* Paragraphs = Avenir */
+p,
 .paragraph {
-    font-family: 'avenir';
-    color: var(--paragraph-text-color);
+  font-family: var(--font-avenir);
+  color: var(--paragraph);
 }
 
-.hero-title {
-    font-family: 'amsipro-bold';
-    color: white;
-    transition: all 0.3s ease;
-}
-.hero-title:hover {
-    color: var(--hover-text-color);
-}
-.hero-paragraph {
-    font-family: 'avenir';
-    color: white;
+/* ==========================================================================
+   Your Custom Classes (fully compatible with v4 syntax
+   ========================================================================== */
+.cta-card {
+  @apply transition-all duration-300 ease-out;
+  border-radius: var(--radius);
+  background: white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  color: var(--primary);
 }
 
-.tool-slide {
-    max-width: 350px;
+.cta-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 24px 48px rgba(40, 52, 142, 0.2);
+  color: var(--primary-hover);
 }
-/* .swiper {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-} */
-.swiper-slide {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.section-title {
+  @apply relative inline-block pb-6 text-3xl md:text-4xl font-bold;
+  color: var(--primary);
 }
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-hover));
+  border-radius: 4px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.section-title:hover::after {
+  width: 128px;
+}
+
+/* Gold hover text */
+.article-title:hover,
+.cta-title:hover,
+.hero-title:hover,
+.footer-title:hover,
+.footer-paragraph:hover {
+  color: var(--primary-hover);
+}
+
+/* Swiper overrides */
 .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border: 2px solid #f59f00;
-    margin: 0 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  width: 14px;
+  height: 14px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(4px);
 }
-.swiper-pagination-bullet:hover {
-    background-color: rgba(255, 255, 255, 0.6);
-    transform: scale(1.1);
-}
+
 .swiper-pagination-bullet-active {
-    background-color: #f59f00;
-    border-color: #f59f00;
+  background: var(--primary-hover);
+  transform: scale(1.35);
 }
+
 .swiper-button-next,
 .swiper-button-prev {
-    color: #f59f00;
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-}
-.swiper:hover .swiper-button-next,
-.swiper:hover .swiper-button-prev {
-    opacity: 1;
-    visibility: visible;
-}
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    transform: scale(1.1);
-    color: var(--hover-text-color);
-}
-@media (max-width: 768px) {
-    .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
-        margin: 0 4px;
-    }
-    .swiper-button-next,
-    .swiper-button-prev {
-        width: 10px;
-        height: 10px;
-    }
+  width: 48px;
+  height: 48px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  color: white;
+  opacity: 0;
+  transition: all 0.3s;
 }
 
-/* Footer */
-.footer-title {
-    font-family: 'amsipro-bold';
-    color: var(--hover-text-color);
-    transition: all 0.3s ease;
+.swiper:hover .swiper-button-next,
+.swiper:hover .swiper-button-prev {
+  opacity: 1;
 }
-.footer-paragraph {
-    font-family: 'avenir';
-    color: white;
-}
-.footer-paragraph:hover {
-    color: var(--hover-text-color);
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: var(--primary-hover);
+  color: #000;
+  transform: scale(1.15);
 }
