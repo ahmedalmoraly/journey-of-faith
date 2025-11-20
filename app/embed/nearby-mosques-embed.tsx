@@ -3,20 +3,46 @@ import { createRoot } from 'react-dom/client';
 import NearbyMosques from '../components/NearbyMosques';
 import '../globals.css'; // Import global styles to ensure Tailwind is applied
 
-// Find the target element
 const targetId = 'nearby-mosques-root';
-const container = document.getElementById(targetId);
 
-if (container) {
-    // Read configuration from data attributes
-    const apiBaseUrl = container.dataset.apiBaseUrl || 'https://journey.theraysoffaith.org'; // Fallback or default
+function mountWidget() {
+    const container = document.getElementById(targetId);
 
+    if (!container) {
+        return false;
+    }
+
+    const apiBaseUrl = container.dataset.apiBaseUrl || 'https://journey.theraysoffaith.org';
     const root = createRoot(container);
     root.render(
         <React.StrictMode>
             <NearbyMosques apiBaseUrl={apiBaseUrl} />
         </React.StrictMode>
     );
+    return true;
+}
+
+function waitForContainer() {
+    const observer = new MutationObserver(() => {
+        if (mountWidget()) {
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Stop observing after a reasonable time to avoid leaks
+    setTimeout(() => observer.disconnect(), 15000);
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    if (!mountWidget()) {
+        waitForContainer();
+    }
 } else {
-    console.warn(`NearbyMosques: Target container #${targetId} not found.`);
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!mountWidget()) {
+            waitForContainer();
+        }
+    });
 }
