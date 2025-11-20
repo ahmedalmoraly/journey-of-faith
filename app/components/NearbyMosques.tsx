@@ -11,7 +11,11 @@ interface Mosque {
   distance: number;
 }
 
-export default function NearbyMosques() {
+interface NearbyMosquesProps {
+  apiBaseUrl?: string;
+}
+
+export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
   const { location, error: locationError, loading: locationLoading, getCurrentLocation } = useUserLocation();
   const [searchQuery, setSearchQuery] = useState('');
   const [mosques, setMosques] = useState<Mosque[]>([]);
@@ -22,14 +26,14 @@ export default function NearbyMosques() {
   const fetchMosques = async (lat: number, lng: number) => {
     setLoading(true);
     setError(null);
-    
+
     try {
-      const res = await fetch(`/api/nearby-mosques?lat=${lat}&lng=${lng}`);
-      
+      const res = await fetch(`${apiBaseUrl}/api/nearby-mosques?lat=${lat}&lng=${lng}`);
+
       if (!res.ok) {
         throw new Error(`API error: ${res.status}`);
       }
-      
+
       const data = await res.json();
       setMosques(data);
     } catch (err) {
@@ -57,13 +61,13 @@ export default function NearbyMosques() {
       const geocodingRes = await fetch(
         `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=1`
       );
-      
+
       if (!geocodingRes.ok) {
         throw new Error('Failed to geocode location');
       }
 
       const geocodingData = await geocodingRes.json();
-      
+
       if (geocodingData.length === 0) {
         throw new Error('Location not found');
       }
@@ -84,7 +88,7 @@ export default function NearbyMosques() {
   return (
     <div className="bg-white rounded-lg shadow-md w-full p-6">
       <div className="flex items-center mb-6">
-        <div className="fa-solid fa-mosque text-[#28348E] mr-3"/>
+        <div className="fa-solid fa-mosque text-[#28348E] mr-3" />
         <h2 className="text-xl font-bold text-[#28348E]">Find Nearby Mosques</h2>
       </div>
 
@@ -194,7 +198,7 @@ export default function NearbyMosques() {
       {/* Empty State */}
       {!loading && !error && !locationError && mosques.length === 0 && (searchMethod || location) && (
         <div className="text-center py-8 text-gray-500">
-          <div className="fa-solid fa-mosque mx-auto mb-3 text-gray-300"/>
+          <div className="fa-solid fa-mosque mx-auto mb-3 text-gray-300" />
           <p className="text-sm">No mosques found nearby</p>
           <p className="text-xs mt-1">Try a different location or search area</p>
         </div>

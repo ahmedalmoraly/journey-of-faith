@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Mosques Widget</title>
+    <!-- Load the generated CSS -->
+    <link rel="stylesheet" href="./nearby-mosques-embed.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: transparent; /* Allow transparency for iframe */
+        }
+        /* Remove container max-width for iframe usage */
+        .widget-container {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget-container">
+        <!-- Target Container -->
+        <!-- In production, api-base-url should point to the actual Next.js app URL -->
+        <div id="nearby-mosques-root" data-api-base-url="https://journey.theraysoffaith.org"></div>
+    </div>
+
+    <!-- Load the generated Script -->
+    <script src="./nearby-mosques-embed.iife.js"></script>
+</body>
+</html>

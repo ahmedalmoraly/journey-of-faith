@@ -7,13 +7,13 @@ const nextConfig: NextConfig = {
     return [
       // Basic redirect
       {
-        source: '/((?!reasons-to-believe|_next/static|_next/image|favicon.ico|api).*)',
+        source: '/((?!reasons-to-believe|_next/static|_next/image|favicon.ico|api|embed).*)',
         destination: '/reasons-to-believe',
         permanent: true, // 308 permanent redirect
       }
     ];
- },
- images: {
+  },
+  images: {
     remotePatterns: [
       {
         protocol: 'https',

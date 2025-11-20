@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npm run build:embed",
+    "build:embed": "vite build -c vite.config.embed.ts && cp app/embed/widget.html public/embed/widget.html",
     "start": "next start",
     "lint": "eslint"
   },
@@ -23,14 +24,16 @@
     "swiper": "^12.0.3"
   },
   "devDependencies": {
-    "babel-plugin-react-compiler": "1.0.0",
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4.1.16",
+    "@vitejs/plugin-react": "^5.1.1",
+    "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.0.0"
+    "eslint-config-next": "16.0.0",
+    "tailwindcss": "^4.1.16",
+    "typescript": "^5",
+    "vite": "^7.2.2"
   }
 }
