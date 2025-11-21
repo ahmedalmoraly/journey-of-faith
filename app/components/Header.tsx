@@ -78,7 +78,7 @@ export default function Header() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
                         <Image src="https://d6x6me9j41n5u.cloudfront.net/rof-logo-notext.png" alt="Logo" className="mr-3 rounded-md" width={32} height={32} />
-                        <span className="text-2xl font-bold text-[#28348E]">Journey of Faith</span>
+                        <span className="title text-2xl font-bold text-[#28348E]">Journey of Faith</span>
                     </Link>
 
                     {/* Desktop Navigation */}

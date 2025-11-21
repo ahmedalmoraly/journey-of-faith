@@ -26,7 +26,6 @@ function isValidCollectionKey(slug: string) {
 export default async function CollectionPage({ params }: PageProps) {
   const { slug } = await params;
   if (!isValidCollectionKey(slug)) {
-    console.log("Invalid collection key: " + slug);
     // redirect to reasons-to-believe
     redirect('/reasons-to-believe');
   }
