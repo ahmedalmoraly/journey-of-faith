@@ -1,10 +1,8 @@
 
-import data from "@/data/landing.json";
-import { redirect, RedirectType } from "next/navigation";
+// import data from "@/data/landing.json";
 
 export default function Home() {
-    redirect('/reasons-to-believe', RedirectType.replace)
-    return null
+    return null;
 }
 
 // export default function Home() {

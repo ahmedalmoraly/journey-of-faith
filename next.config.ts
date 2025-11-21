@@ -5,11 +5,10 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   async redirects() {
     return [
-      // Basic redirect
       {
-        source: '/((?!reasons-to-believe|_next/static|_next/image|favicon.ico|api|embed).*)',
+        source: '/',
         destination: '/reasons-to-believe',
-        permanent: true, // 308 permanent redirect
+        permanent: true,
       }
     ];
   },
@@ -17,7 +16,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'd6x6me9j41n5u.cloudfront.net', // Replace with your S3 endpoint
+        hostname: 'd6x6me9j41n5u.cloudfront.net',
         pathname: '/**',
       },
     ],

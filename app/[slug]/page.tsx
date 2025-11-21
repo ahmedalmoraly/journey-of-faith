@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Hero from '@/components/Hero';
 import MainContainer from '@/components/MainContainer';
 import ToolsGrid from '@/components/ToolsGrid';
@@ -26,7 +26,9 @@ function isValidCollectionKey(slug: string) {
 export default async function CollectionPage({ params }: PageProps) {
   const { slug } = await params;
   if (!isValidCollectionKey(slug)) {
-    notFound();
+    console.log("Invalid collection key: " + slug);
+    // redirect to reasons-to-believe
+    redirect('/reasons-to-believe');
   }
 
   const module = await collections[slug].data();

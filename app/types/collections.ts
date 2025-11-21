@@ -73,6 +73,13 @@ export interface CollectionItem {
   slug: string;
 }
 
+export const reasonsToBelieve: CollectionItem = {
+  title: "Reasons to Believe",
+  description: "Islam invites you to explore the magnificent creation, where every discovery reveals another chapter in the unfolding story of God's boundless wisdom. Far from standing in opposition to faith, science becomes a trusted companion in this awe-inspiring journey of understanding.",
+  image: "https://d6x6me9j41n5u.cloudfront.net/reasons_to_believe.webp",
+  slug: "/reasons-to-believe",
+};
+
 export const knotsOfFaith: CollectionItem = {
   title: "Knots of Faith",
   description: "In Islam, God (Allah) is the Absolute One, the Originator of everything. He is beyond comprehension, unlike anything created, with no likeness ascribed to Him. His existence is self-evident, revealed in the intricate tapestry of the universe, yet requiring no proof.",
@@ -95,6 +102,7 @@ export const herMajesty: CollectionItem = {
 };
 
 export const allCollections: { [key: string]: CollectionItem } = {
+  'reasons-to-believe': reasonsToBelieve,
   'knots-of-faith': knotsOfFaith,
   'from-the-ground-up': fromTheGroundUp,
   'her-majesty': herMajesty,
