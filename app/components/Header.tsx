@@ -68,7 +68,7 @@ export default function Header() {
         { id: 3, name: 'Knots of Faith', href: '/knots-of-faith' },
         { id: 4, name: 'From The Ground Up', href: '/from-the-ground-up' },
         { id: 5, name: 'Her Majesty', href: '/her-majesty' },
-        { id: 6, name: 'About', href: '/about' },
+        { id: 6, name: 'About', href: 'https://theraysoffaith.org/about-us' },
     ];
 
     return (
@@ -87,6 +87,7 @@ export default function Header() {
                             <Link
                                 key={item.id}
                                 href={item.href}
+                                target={item.href.startsWith('http') ? '_blank' : '_self'}
                                 className="article-title transition-colors"
                             >
                                 {item.name}
