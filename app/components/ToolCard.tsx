@@ -11,7 +11,7 @@ export default function ToolCard({ title, subtitle, image, description, link, bu
                       <div className="bg-white/20 backdrop-blur-sm p-2 rounded-lg mr-3">
                           <i className={icon}></i>
                       </div>
-                      <h3 className="text-lg font-bold text-white">{title}</h3>
+                      <h3 className="text-lg font-bold article-title">{title}</h3>
                   </div>
                   <div className="mt-2 flex items-center">
                       <span className="inline-block w-3 h-3 bg-green-400 rounded-full mr-2"></span>
@@ -21,9 +21,9 @@ export default function ToolCard({ title, subtitle, image, description, link, bu
           </div>
       </div>
     <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition transform hover:-translate-y-1">
-      <h3 className="text-2xl font-bold text-[#28348E]">{title}</h3>
-      <p className="text-sm text-[#28348E] font-medium mb-2">{subtitle}</p>
-      <p className="text-gray-600 mb-4">{description}</p>
+      <h3 className="text-2xl font-bold article-title">{title}</h3>
+      <p className="text-sm font-medium mb-2">{subtitle}</p>
+      <p className="paragraph mb-4">{description}</p>
       <a
         href={link}
         target="_blank"

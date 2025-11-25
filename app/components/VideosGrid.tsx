@@ -2,61 +2,66 @@
 import { useMemo } from "react";
 import type {Video} from "@/types/collections";
 import VideoCard from "./VideoCard";
+import SwiperGrid from "./SwiperGrid";
+import { SwiperSlide } from "swiper/react";
 
 export default function VideosGrid({ videos, shorts }: { videos: Video[], shorts: Video[] }) {
-  if (!videos || videos.length === 0) {
+  if ((!videos || videos.length === 0) && (!shorts || shorts.length === 0)) {
     return null;
   }
-  // Memoize the videos to prevent unnecessary re-renders
-  const videoItems = useMemo(() => {
+  const videoSlides = useMemo(() => {
     if (!videos || videos.length === 0) {
       return null;
     }
     return videos.map((video) => (
-      <VideoCard
-        key={video.title}
-        title={video.title}
-        url={video.url}
-        description={video.description}
+      <SwiperSlide key={video.title}>
+        <VideoCard
+          key={video.title}
+          title={video.title}
+          url={video.url}
+          description={video.description}
         isShort={video.isShort}
-      />
+        />
+      </SwiperSlide>
     ));
   }, [videos]);
 
-  const shortItems = useMemo(() => {
+  const shortSlides = useMemo(() => {
     if (!shorts || shorts.length === 0) {
       return null;
     }
     return shorts.map((short) => (
-      <VideoCard
-        key={short.title}
-        title={short.title}
-        url={short.url}
-        description={short.description}
+      <SwiperSlide key={short.title}>
+        <VideoCard
+          key={short.title}
+          title={short.title}
+          url={short.url}
+          description={short.description}
         isShort={short.isShort}
-      />
+        />
+      </SwiperSlide>
     ));
   }, [shorts]);
+
   return (
     <section className="mb-16">
+      {videoSlides && (
+        <>
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold section-title">Featured Videos</h2>
-        {/* <a href="#" className="text-[#28348E] hover:text-[#FFC931] font-medium flex items-center">
-          View More Videos <i className="fas fa-arrow-right ml-2"></i>
-        </a> */}
       </div>
+      <SwiperGrid slides={videoSlides} showPagination={false} slideHeight="h-full" slideMaxWidth="max-w-[350px]" navigationClassPrefix="swiper-video"/>
+      </>
+      )}
 
-      <div className="grid md:grid-cols-2 gap-6">
-          {/* Stacked Videos Column */}
-          <div className="space-y-4">
-              {videoItems}
-          </div>
-
-          {/* YouTube Short Column */}
-          <div className="bg-transparent rounded-xl overflow-hidden">
-            {shortItems}
-          </div>
-      </div>
+      {shortSlides && (
+        <>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold section-title">Featured Shorts</h2>
+        </div>
+        <SwiperGrid slides={shortSlides} showPagination={false} slideHeight="h-full" navigationClassPrefix="swiper-short"/>
+        </>
+      )}
     </section>
   );
 }

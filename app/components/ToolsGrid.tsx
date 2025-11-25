@@ -2,13 +2,7 @@
 
 import ToolCard from "./ToolCard";
 import QuranVerseQuote, { QuranVerseQuoteProps } from "./QuranVerseQuote";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import SwiperGrid from "./SwiperGrid";
 
 
 export default function ToolsGrid({ tools }: { tools: any[] }) {
@@ -34,36 +28,12 @@ export default function ToolsGrid({ tools }: { tools: any[] }) {
                     <p className="text-gray-600 mb-8 paragraph">
                         These interactive tools reveal the intricate design and complexity of Allah's creation, from the vastness of space to the tiniest particles. Each one is a window into the signs (ayaat) that Allah has placed in the universe for those who reflect.
                     </p>
-                    <div className="relative w-full px-6 overflow-visible">
-                        {/* Navigation Buttons */}
-                        <button className="scientific-tools-prev absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-[#28348E] hover:bg-[#28348E] hover:text-white transition-all duration-300">
-                            <i className="fas fa-chevron-left"></i>
-                        </button>
-
-                        <Swiper
-                            modules={[Navigation, Pagination, Autoplay]}
-                            spaceBetween={30}
-                            slidesPerView='auto'
-                            pagination={{ clickable: true }}
-                            navigation={{
-                                enabled: true,
-                                nextEl: '.scientific-tools-next',
-                                prevEl: '.scientific-tools-prev',
-                            }}
-                            autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
-                            loop={true}
-                            className="scientific-tools-swiper relative"
-                        >
-                            {tools.map((tool, i) => (
-                                <SwiperSlide key={i} className="max-w-[300px]">
-                                    <ToolCard {...tool} />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                        <button className="scientific-tools-next absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-[#28348E] hover:bg-[#28348E] hover:text-white transition-all duration-300">
-                            <i className="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
+                    <SwiperGrid 
+                        slides={tools.map((tool, i) => (
+                            <ToolCard key={i} {...tool} />
+                        ))}
+                        navigationClassPrefix="scientific-tools"
+                    />
 
                     <QuranVerseQuote {...quranQuote} />
                 </div>
