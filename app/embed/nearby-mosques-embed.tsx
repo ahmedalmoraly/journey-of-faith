@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import NearbyMosques from '../components/NearbyMosques';
 import '../globals.css'; // Import global styles to ensure Tailwind is applied
+import './embed.css'; // Load local font faces for standalone embeds
 
 const targetId = 'nearby-mosques-root';
 

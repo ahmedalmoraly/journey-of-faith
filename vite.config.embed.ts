@@ -40,6 +40,7 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './app'),
+            '@fonts': path.resolve(__dirname, './public/fonts'),
         },
     },
 });

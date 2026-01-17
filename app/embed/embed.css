@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'AvenirLocal';
+    src: url('@fonts/avenir_roman_12.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AmsiProLocal';
+    src: url('@fonts/AmsiPro-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AmsiProLocal';
+    src: url('@fonts/AmsiPro-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+.nearby-mosques-widget {
+    --font-avenir: 'AvenirLocal', 'Avenir', 'Helvetica Neue', Arial, sans-serif;
+    --font-amsipro: 'AmsiProLocal', 'AmsiPro', 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-avenir);
+}
+
+.nearby-mosques-widget h1,
+.nearby-mosques-widget h2,
+.nearby-mosques-widget h3,
+.nearby-mosques-widget h4,
+.nearby-mosques-widget h5,
+.nearby-mosques-widget h6 {
+    font-family: var(--font-amsipro);
+}
+
+.nearby-mosques-widget .nearby-mosques-heading-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+}

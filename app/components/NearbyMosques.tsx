@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, MapPin, Loader2 } from 'lucide-react';
+import { Search, MapPin, Loader2, Landmark } from 'lucide-react';
 import { useUserLocation } from '@/hooks/useUserLocation';
 
 interface Mosque {
@@ -86,9 +86,9 @@ export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md w-full p-6">
+    <div className="nearby-mosques-widget bg-white rounded-lg shadow-md w-full p-6">
       <div className="flex items-center mb-6">
-        <div className="fa-solid fa-mosque text-[#28348E] mr-3" />
+        <Landmark className="nearby-mosques-heading-icon text-[#28348E] mr-3" />
         <h2 className="text-xl font-bold text-[#28348E]">Find Nearby Mosques</h2>
       </div>
 
@@ -198,7 +198,7 @@ export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
       {/* Empty State */}
       {!loading && !error && !locationError && mosques.length === 0 && (searchMethod || location) && (
         <div className="text-center py-8 text-gray-500">
-          <div className="fa-solid fa-mosque mx-auto mb-3 text-gray-300" />
+          <Landmark className="nearby-mosques-heading-icon mx-auto mb-3 text-gray-300" />
           <p className="text-sm">No mosques found nearby</p>
           <p className="text-xs mt-1">Try a different location or search area</p>
         </div>

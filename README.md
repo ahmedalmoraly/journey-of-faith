@@ -60,6 +60,7 @@ The `NearbyMosques` component can be exported as a standalone widget for WordPre
    - **Script tag (host page owns the DOM):**
 
      ```html
+     <link rel="stylesheet" href="https://journey.theraysoffaith.org/embed/nearby-mosques-embed.css" />
      <div id="nearby-mosques-root" data-api-base-url="https://journey.theraysoffaith.org"></div>
      <script src="https://journey.theraysoffaith.org/embed/nearby-mosques-embed.iife.js" defer></script>
      ```
