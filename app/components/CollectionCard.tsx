@@ -8,7 +8,7 @@ export default function CollectionCard({ title, description, image, slug }: Coll
     <Link href={slug}>
       <div className={`group bg-linear-to-br rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer`}>
         <div className="relative h-48">
-          <Image src={image} alt={title} fill priority className="object-cover rounded-t-xl" />
+          <Image src={image} alt={title} fill priority sizes="(max-width: 768px) 100vw, 33vw" className="object-cover rounded-t-xl" />
         </div>
         <div className="bg-white rounded-2xl p-4 h-full flex flex-col justify-between">
           <div>

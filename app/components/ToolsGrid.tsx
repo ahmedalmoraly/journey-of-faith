@@ -3,9 +3,13 @@
 import ToolCard from "./ToolCard";
 import QuranVerseQuote, { QuranVerseQuoteProps } from "./QuranVerseQuote";
 import SwiperGrid from "./SwiperGrid";
+import type { Tool } from "@/types/collections";
 
+interface ToolsGridProps {
+    tools: Tool[];
+}
 
-export default function ToolsGrid({ tools }: { tools: any[] }) {
+export default function ToolsGrid({ tools }: ToolsGridProps) {
     const quranQuote: QuranVerseQuoteProps = {
         text: "He ˹also˺ subjected for you whatever is in the heavens and whatever is on the earth—all by His grace. Surely in this are signs for people who reflect.",
         reference: "Quran 45:13",
@@ -26,7 +30,7 @@ export default function ToolsGrid({ tools }: { tools: any[] }) {
                         </span>
                     </p>
                     <p className="text-gray-600 mb-8 paragraph">
-                        These interactive tools reveal the intricate design and complexity of Allah's creation, from the vastness of space to the tiniest particles. Each one is a window into the signs (ayaat) that Allah has placed in the universe for those who reflect.
+                        These interactive tools reveal the intricate design and complexity of Allah&#39;s creation, from the vastness of space to the tiniest particles. Each one is a window into the signs (ayaat) that Allah has placed in the universe for those who reflect.
                     </p>
                     <SwiperGrid 
                         slides={tools.map((tool, i) => (

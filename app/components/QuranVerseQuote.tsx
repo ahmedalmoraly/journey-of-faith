@@ -13,7 +13,7 @@ export default function QuranVerseQuote({ text, reference, verse_id }: QuranVers
     <blockquote className="text-center my-12 max-w-4xl mx-auto bg-linear-to-r from-[#F8FAFC] to-[#F0F4F8] p-8 rounded-xl border-r-4 border-[#28348E] italic text-lg text-[#28348E]">
       <i className="fas fa-quote-left text-3xl text-gray-300 mb-4"></i>
                 
-      <p className="mb-4 text-center px-6">"{text}"</p>
+      <p className="mb-4 text-center px-6">&ldquo;{text}&rdquo;</p>
       <footer className="text-right font-semibold text-[#28348E]">
         <Link href={`https://quran.com/${verse_id}`} target="_blank" rel="noopener noreferrer">— {reference}</Link>
       </footer>

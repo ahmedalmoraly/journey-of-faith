@@ -77,7 +77,7 @@ export default function Header() {
                 <div className="flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <Image src="https://d6x6me9j41n5u.cloudfront.net/rof-logo-notext.png" alt="Logo" className="mr-3 rounded-md" width={32} height={32} />
+                        <Image src="https://d6x6me9j41n5u.cloudfront.net/rof-logo-notext.png" alt="Logo" className="mr-3 rounded-md" width={32} height={32} priority sizes="32px" />
                         <span className="title text-2xl font-bold text-[#28348E]">Journey of Faith</span>
                     </Link>
 

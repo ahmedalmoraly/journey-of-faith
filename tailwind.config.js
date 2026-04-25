@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+import lineClamp from '@tailwindcss/line-clamp';
+
+const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,7 +9,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Your custom colors
         primary: {
           DEFAULT: '#28348E',
           light: '#3F51B5',
@@ -18,8 +19,6 @@ module.exports = {
           light: '#FFD95A',
           dark: '#FFB300',
         },
-        // Add other custom colors as needed
-
         'space-blue': '#1a237e',
         'cosmic-purple': '#4a148c',
         'celestial-gold': '#f59f00',
@@ -34,12 +33,9 @@ module.exports = {
         'amsipro-bold': ['AmsiPro-Bold', 'sans-serif'],
         avenir: ['Avenir', 'sans-serif'],
       },
-      // You can extend other theme properties here
-      // like spacing, borderRadius, etc.
     },
   },
-  // tailwind.config.js
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-  ],
-}
+  plugins: [lineClamp],
+};
+
+export default config;

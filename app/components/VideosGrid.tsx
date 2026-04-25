@@ -6,9 +6,6 @@ import SwiperGrid from "./SwiperGrid";
 import { SwiperSlide } from "swiper/react";
 
 export default function VideosGrid({ videos, shorts }: { videos: Video[], shorts: Video[] }) {
-  if ((!videos || videos.length === 0) && (!shorts || shorts.length === 0)) {
-    return null;
-  }
   const videoSlides = useMemo(() => {
     if (!videos || videos.length === 0) {
       return null;
@@ -42,6 +39,10 @@ export default function VideosGrid({ videos, shorts }: { videos: Video[], shorts
       </SwiperSlide>
     ));
   }, [shorts]);
+
+  if (!videoSlides && !shortSlides) {
+    return null;
+  }
 
   return (
     <section className="mb-16">

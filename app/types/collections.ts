@@ -8,6 +8,7 @@ export interface CollectionData {
   videos: Array<Video>;
   shorts: Array<Video>;
   relatedCollections: Array<string>;
+  revertsStories: Array<Video>;
 }
 export interface FeaturedArticle {
   title: string;

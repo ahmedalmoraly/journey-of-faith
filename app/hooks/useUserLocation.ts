@@ -1,15 +1,15 @@
 // app/hooks/useUserLocation.ts
 import { useState, useCallback } from 'react';
 
-export function useUserLocation() {
-  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+type LocationCallback = (lat: number, lng: number) => void;
+
+export function useUserLocation(onLocationRetrieved?: LocationCallback) {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const getCurrentLocation = useCallback(() => {
     if (!navigator.geolocation) {
       setError('Geolocation is not supported by your browser');
-      setLoading(false);
       return;
     }
 
@@ -18,20 +18,20 @@ export function useUserLocation() {
 
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        setLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
         setLoading(false);
+        onLocationRetrieved?.(pos.coords.latitude, pos.coords.longitude);
       },
-      (err) => {
+      () => {
         setError('Unable to retrieve your location. Please enable location permissions.');
         setLoading(false);
       },
       {
         enableHighAccuracy: true,
         timeout: 10000,
-        maximumAge: 300000, // 5 minutes
+        maximumAge: 300000,
       }
     );
-  }, []);
+  }, [onLocationRetrieved]);
 
-  return { location, error, loading, getCurrentLocation };
+  return { error, loading, getCurrentLocation };
 }

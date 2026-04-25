@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Reasons to Believe!",
-    "description": "Islam invites you to explore the magnificent creation, where every discovery reveals another chapter in the unfolding story of God's boundless wisdom. Far from standing in opposition to faith, science becomes a trusted companion in this awe-inspiring journey of understanding.",
+    "title": "Knots of Faith",
+    "description": "In Islam, God (Allah) is the Absolute One, the Originator of everything. He is beyond comprehension, unlike anything created, with no likeness ascribed to Him. His existence is self-evident, revealed in the intricate tapestry of the universe, yet requiring no proof.",
     "slides": [
       {
         "image": "https://d6x6me9j41n5u.cloudfront.net/reasons-to-believe/universe-expansion.webp",
@@ -116,40 +116,8 @@
       "source": "WhyIslam.org"
     }
   ],
-  "revertsStories": [
-    {
-      "title": "\"I Thought Religion Was Just a Business!\" - From Buddhism to Muslim Samurai",
-      "url": "https://www.youtube.com/embed/wKJbjzSYRPs",
-      "description": "He once thought religion was a business. Hear the powerful journey of a Japanese Buddhist who left his past to become a Muslim Samurai.",
-      "isShort": false
-    },
-    {
-      "title": "\"I Cried Out to God After Crash…\" An Agnostic Converts to Islam!",
-      "url": "https://www.youtube.com/embed/FkH6KKEiGe8",
-      "description": "The life story of Joseph Jennings, a moto sportsman whose life changed after an accident.",
-      "isShort": false
-    },
-    {
-      "title": "From Night Club to Islam - 23yo Entrepreneur Converts to Islam",
-      "url": "https://www.youtube.com/embed/5W4plsSFEJc",
-      "description": "The story of brother Thom J. Défilet's conversion to Islam.",
-      "isShort": false
-    },
-    {
-      "title": "NYC Christian Singer Converts To Islam! - \"I Sang in Churches… Until I Found Islam\"",
-      "url": "https://www.youtube.com/embed/CK7geVgDHPQ",
-      "description": "Discover how NYC opera singer Noor Saadeh embraced Islam, her journey to Shahada, and what led her to faith.",
-      "isShort": false
-    },
-    {
-      "title": "\"I Read the Bible Cover to Cover… But Became Muslim!\" - A Christian Converts to Islam",
-      "url": "https://www.youtube.com/embed/vAU6Si7cafA",
-      "description": "Wesley Lebron's journey from a past in gang life to a complete transformation after embracing Islam.",
-      "isShort": false
-    }
-  ],
   "relatedCollections": [
-    "knots-of-faith",
+    "reasons-to-believe",
     "from-the-ground-up",
     "her-majesty"
   ]

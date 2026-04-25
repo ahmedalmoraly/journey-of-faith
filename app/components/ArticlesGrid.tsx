@@ -9,9 +9,6 @@ import { SwiperSlide } from "swiper/react";
 import { useMemo } from "react";
 
 export default function ArticlesGrid({ articles }: { articles: Article[] }) {
-  if ((!articles || articles.length === 0)) {
-    return null;
-  }
   const articleSlides = useMemo(() => {
     if (!articles || articles.length === 0) {
       return null;
@@ -29,6 +26,10 @@ export default function ArticlesGrid({ articles }: { articles: Article[] }) {
       </SwiperSlide>
     ));
   }, [articles]);
+
+  if (!articleSlides) {
+    return null;
+  }
 
   return (
 

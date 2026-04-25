@@ -8,7 +8,7 @@ export default function FeaturedArticle({ title, paragraphs, image }: FeaturedAr
             <h2 className="text-2xl font-bold mb-6 section-title">Featured Content</h2>
             <div className="bg-white rounded-xl shadow-sm overflow-hidden">
                 <div className="relative w-full h-64">
-                    <Image src={image} alt={title} className="object-cover" fill priority />
+                    <Image src={image} alt={title} className="object-cover" fill priority sizes="(max-width: 768px) 100vw, 50vw" />
                 </div>
                 <div className="p-6">
                     <h2 className="text-2xl font-bold mb-4 article-title">{title}</h2>

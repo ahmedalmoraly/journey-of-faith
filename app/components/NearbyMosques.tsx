@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Search, MapPin, Loader2, Landmark } from 'lucide-react';
 import { useUserLocation } from '@/hooks/useUserLocation';
 
@@ -9,6 +9,7 @@ interface Mosque {
   lat: number;
   lng: number;
   distance: number;
+  address?: string;
 }
 
 interface NearbyMosquesProps {
@@ -16,14 +17,12 @@ interface NearbyMosquesProps {
 }
 
 export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
-  const { location, error: locationError, loading: locationLoading, getCurrentLocation } = useUserLocation();
   const [searchQuery, setSearchQuery] = useState('');
   const [mosques, setMosques] = useState<Mosque[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [searchMethod, setSearchMethod] = useState<'current' | 'city' | null>(null);
 
-  const fetchMosques = async (lat: number, lng: number) => {
+  const fetchMosques = useCallback(async (lat: number, lng: number) => {
     setLoading(true);
     setError(null);
 
@@ -41,10 +40,13 @@ export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [apiBaseUrl]);
+
+  const { error: locationError, loading: locationLoading, getCurrentLocation } = useUserLocation(fetchMosques);
 
   const handleUseCurrentLocation = () => {
-    setSearchMethod('current');
+    setMosques([]);
+    setError(null);
     getCurrentLocation();
   };
 
@@ -52,63 +54,58 @@ export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
     e.preventDefault();
     if (!searchQuery.trim()) return;
 
-    setSearchMethod('city');
     setLoading(true);
     setError(null);
 
     try {
-      // Geocoding API to get coordinates from city name
-      const geocodingRes = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=1`
+      const res = await fetch(
+        `${apiBaseUrl}/api/nearby-mosques?q=${encodeURIComponent(searchQuery)}`
       );
 
-      if (!geocodingRes.ok) {
-        throw new Error('Failed to geocode location');
+      if (!res.ok) {
+        throw new Error('Failed to search location');
       }
 
-      const geocodingData = await geocodingRes.json();
+      const data = await res.json();
 
-      if (geocodingData.length === 0) {
-        throw new Error('Location not found');
+      if (data.error) {
+        throw new Error(data.error || 'Location not found');
       }
 
-      const { lat, lon } = geocodingData[0];
-      await fetchMosques(parseFloat(lat), parseFloat(lon));
+      if (data.length === 0) {
+        throw new Error('No mosques found nearby');
+      }
+
+      setMosques(data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to search location');
+      setError(err instanceof Error ? err.message : 'Search failed');
+    } finally {
       setLoading(false);
     }
   };
 
-  // Fetch mosques when location is available
-  if (location && searchMethod === 'current' && mosques.length === 0 && !loading) {
-    fetchMosques(location.lat, location.lng);
-  }
-
   return (
-    <div className="nearby-mosques-widget bg-white rounded-lg shadow-md w-full p-6">
-      <div className="flex items-center mb-6">
-        <Landmark className="nearby-mosques-heading-icon text-[#28348E] mr-3" />
-        <h2 className="text-xl font-bold text-[#28348E]">Find Nearby Mosques</h2>
+    <div className="nearby-mosques-widget bg-white rounded-lg shadow-md w-full p-4 md:p-6">
+      <div className="flex items-center mb-4 md:mb-6">
+        <Landmark className="nearby-mosques-heading-icon text-[#28348E] mr-2 md:mr-3 w-5 h-5 md:w-6 md:h-6" />
+        <h2 className="text-lg md:text-xl font-bold text-[#28348E]">Find Nearby Mosques</h2>
       </div>
 
-      {/* Search Methods */}
-      <div className="space-y-4 mb-6">
-        {/* Current Location Button */}
+      <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
         <button
           onClick={handleUseCurrentLocation}
           disabled={locationLoading}
-          className="w-full flex items-center justify-center px-4 py-3 bg-[#FFC931] text-[#28348E] rounded-md hover:bg-[#28348E] hover:text-[#FFC931] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center px-3 md:px-4 py-2.5 md:py-3 bg-[#FFC931] text-[#28348E] rounded-md hover:bg-[#28348E] hover:text-[#FFC931] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
         >
           {locationLoading ? (
             <>
-              <Loader2 className="animate-spin mr-2" size={18} />
-              Getting location...
+              <Loader2 className="animate-spin mr-2 w-4 h-4" />
+              <span>Getting location...</span>
             </>
           ) : (
             <>
-              <MapPin className="mr-2" size={18} />
-              Use My Current Location
+              <MapPin className="mr-2 w-4 h-4" />
+              <span>Use My Current Location</span>
             </>
           )}
         </button>
@@ -117,34 +114,33 @@ export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-300"></div>
           </div>
-          <div className="relative flex justify-center text-sm">
+          <div className="relative flex justify-center text-xs md:text-sm">
             <span className="px-2 bg-white text-gray-500">OR</span>
           </div>
         </div>
 
-        {/* City Search Form */}
-        <form onSubmit={handleCitySearch} className="space-y-3">
+        <form onSubmit={handleCitySearch} className="space-y-2 md:space-y-3">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform text-[#28348E] -translate-y-1/2" size={18} />
+            <Search className="absolute left-3 top-1/2 transform text-[#28348E] -translate-y-1/2 w-4 h-4" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Enter city or location (e.g., Mecca, London)"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 text-[#28348E] rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFC931] focus:border-transparent"
+              placeholder="Enter city (e.g., Raleigh, NYC)"
+              className="w-full pl-9 md:pl-10 pr-3 md:pr-4 py-2.5 md:py-3 text-sm border border-gray-300 text-[#28348E] rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFC931] focus:border-transparent"
               disabled={loading}
             />
           </div>
           <button
             type="submit"
             disabled={loading || !searchQuery.trim()}
-            className="w-full px-4 py-3 bg-[#28348E] text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-3 md:px-4 py-2.5 md:py-3 bg-[#28348E] text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
           >
             {loading ? (
-              <>
-                <Loader2 className="animate-spin inline mr-2" size={18} />
-                Searching...
-              </>
+              <span className="flex items-center justify-center">
+                <Loader2 className="animate-spin inline mr-2 w-4 h-4" />
+                <span>Searching...</span>
+              </span>
             ) : (
               'Search Location'
             )}
@@ -152,42 +148,47 @@ export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
         </form>
       </div>
 
-      {/* Error Display */}
       {error && (
-        <div className="p-4 mb-6 text-red-600 bg-red-50 rounded-md border border-red-200">
-          <p className="text-sm">{error}</p>
+        <div className="p-3 md:p-4 mb-4 text-red-600 bg-red-50 rounded-md border border-red-200 text-sm">
+          <p>{error}</p>
         </div>
       )}
 
       {locationError && (
-        <div className="p-4 mb-6 text-red-600 bg-red-50 rounded-md border border-red-200">
-          <p className="text-sm">{locationError}</p>
+        <div className="p-3 md:p-4 mb-4 text-red-600 bg-red-50 rounded-md border border-red-200 text-sm">
+          <p>{locationError}</p>
         </div>
       )}
 
-      {/* Results */}
       {mosques.length > 0 && (
-        <div className="space-y-3">
-          <h3 className="font-semibold text-gray-700">
+        <div className="space-y-2 md:space-y-3">
+          <h3 className="font-semibold text-gray-700 text-sm md:text-base">
             Found {mosques.length} mosque{mosques.length !== 1 ? 's' : ''} nearby
           </h3>
-          <div className="max-h-96 overflow-y-auto space-y-2">
+          <div className="max-h-[300px] md:max-h-96 overflow-y-auto space-y-2">
             {mosques.map((mosque, index) => (
               <a
                 key={index}
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.name)}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.name)}%20${encodeURIComponent(mosque.address || '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors cursor-pointer"
+                className="block p-2.5 md:p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors cursor-pointer"
               >
                 <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <h4 className="font-medium text-gray-900">{mosque.name}</h4>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {mosque.distance.toFixed(1)} km away
-                    </p>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-medium text-gray-900 text-sm md:text-base truncate block">{mosque.name}</h4>
+                    {mosque.address && (
+                      <p className="text-xs md:text-sm text-gray-500 mt-0.5 md:mt-1 line-clamp-1">{mosque.address}</p>
+                    )}
+                    {mosque.distance !== undefined && (
+                      <p className="text-xs md:text-sm text-gray-500 mt-0.5 md:mt-1">
+                        {mosque.distance < 0.1
+                          ? `${(mosque.distance * 5280).toFixed(0)} ft`
+                          : `${mosque.distance.toFixed(1)} mi`}
+                      </p>
+                    )}
                   </div>
-                  <MapPin className="text-gray-400 ml-2" size={16} />
+                  <MapPin className="text-gray-400 ml-2 w-4 h-4 flex-shrink-0" />
                 </div>
               </a>
             ))}
@@ -195,12 +196,10 @@ export default function NearbyMosques({ apiBaseUrl = '' }: NearbyMosquesProps) {
         </div>
       )}
 
-      {/* Empty State */}
-      {!loading && !error && !locationError && mosques.length === 0 && (searchMethod || location) && (
-        <div className="text-center py-8 text-gray-500">
-          <Landmark className="nearby-mosques-heading-icon mx-auto mb-3 text-gray-300" />
-          <p className="text-sm">No mosques found nearby</p>
-          <p className="text-xs mt-1">Try a different location or search area</p>
+      {!loading && !error && !locationError && mosques.length === 0 && (
+        <div className="text-center py-6 md:py-8 text-gray-500">
+          <Landmark className="nearby-mosques-heading-icon mx-auto mb-2 md:mb-3 w-8 h-8 md:w-10 md:h-10 text-gray-300" />
+          <p className="text-sm">Search for mosques above</p>
         </div>
       )}
     </div>

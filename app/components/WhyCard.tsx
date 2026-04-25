@@ -1,4 +1,10 @@
-export default function WhyCard({ icon, title, text }: any) {
+interface WhyCardProps {
+  icon: string;
+  title: string;
+  text: string;
+}
+
+export default function WhyCard({ icon, title, text }: WhyCardProps) {
   return (
     <div className="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition">
       <div className="text-6xl mb-4">{icon}</div>

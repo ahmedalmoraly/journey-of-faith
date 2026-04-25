@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -8,8 +7,6 @@ config.autoAddCss = false
 
 import Layout from '@/components/Layout';
 import { amsipro, avenir } from '@/lib/fonts';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Journey of Faith',
